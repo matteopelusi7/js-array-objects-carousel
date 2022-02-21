@@ -1,27 +1,3 @@
-// const items = [
-//     'img/01.jpg',
-//     'img/02.jpg',
-//     'img/03.jpg',
-//     'img/04.jpg',
-//     'img/05.jpg'
-// ];
-
-// const title = [
-//     'Svezia',
-//     'Svizzera',
-//     'Gran Bretagna',
-//     'Germania',
-//     'Paradise'
-// ];
-
-// const text = [
-//     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
-//     'Lorem ipsum',
-//     'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
-//     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-//     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-// ];
-
 const carouselSlide = [
     {
         items: 'img/01.jpg',
@@ -56,35 +32,33 @@ const slideWrapper = document.querySelector('.slide-wrapper');
 const imgSlide = document.querySelector('.img-slide');
 const slideText = document.querySelector('.slide-text');
 
-for (let i = 0; i < items.length; i++) {
-
-    const element = items[i];
+carouselSlide.forEach( (element) => {
 
     const item = `
         <div class="item">
-            <img src="${items[i]}">
+            <img src="${element.items}">
         </div> `;
 
     slideWrapper.innerHTML += item;
 
     const itemImage = `
         <div class="item-slide">
-            <img src="${items[i]}">
+            <img src="${element.items}">
         </div> `;
 
     imgSlide.innerHTML += itemImage;
 
     const titleSlide = ` 
-            <h2 class="title-slider">${title[i]}</h2> `;
+            <h2 class="title-slider">${element.title}</h2> `;
 
     slideText.innerHTML += titleSlide;
 
     const desSlide = `
-        <p class="description-slide">${text[i]}`;
+        <p class="description-slide">${element.text}`;
 
     slideText.innerHTML += desSlide;
 
-}
+} )
 
 const image = [...document.getElementsByClassName('item')];
 image[currentIndex].classList.add('active');
@@ -159,7 +133,7 @@ buttonUp.addEventListener('click', function() {
         titleSlider[currentIndex].classList.remove('active');
         descripionSlider[currentIndex].classList.remove('active');
     
-        currentIndex = items.length - 1;
+        currentIndex = carouselSlide.length - 1;
     
         image[currentIndex].classList.add('active');
         imageSlider[currentIndex].classList.add('active');
